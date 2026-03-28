@@ -1,71 +1,75 @@
-# corne-restricted-environment-config
-This repository contains a hardened, high-compliance firmware configuration for the Corne (Crkbd) split keyboard.
+# Corne Restricted Environment Config
 
-Secure Corne v4 Firmware (Restricted Environment)
-This repository contains a security-hardened QMK configuration for the Corne v4 (crkbd rev4_0 standard). It is designed for high-security environments where "on-the-fly" layout changes (VIA/Vial) are prohibited.
+Security-hardened QMK firmware for the Corne v4 (crkbd rev4_0 standard), designed for high-security environments where "on-the-fly" layout changes (VIA/Vial) are prohibited.
 
-1. Prerequisites
-Before starting, install the required compilers and the QMK CLI tool.
+## Table of Contents
 
-For Fedora Users:
-Bash
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Building and Flashing](#building-and-flashing)
+- [Security Audit](#security-audit)
+
+## Prerequisites
+
+Install the required compilers and QMK CLI:
+
+```bash
+# Fedora
 sudo dnf install arm-none-eabi-gcc-cs arm-none-eabi-newlib dfu-util git
-Install QMK CLI (using uv):
-Bash
+
+# Install QMK CLI
 uv tool install qmk
 qmk setup
-Note: Type Y when asked to clone the firmware and install udev rules.
+```
 
-2. Installation & Setup
-Clone this repository to your preferred development folder and link it to your QMK installation.
+> Note: Type `Y` when asked to clone the firmware and install udev rules.
 
-Bash
-# 1. Clone the repository
+## Installation
+
+```bash
+# Clone the repository
 git clone <your-repo-url>
 cd corne-restricted-environment-config
 
-# 2. Create the target directory in your QMK folder
+# Create the target directory and symlink to QMK
 mkdir -p ~/qmk_firmware/keyboards/crkbd/rev4_0/standard/keymaps/
-
-# 3. Create a dynamic symbolic link (Works from any location)
 ln -s "$PWD" ~/qmk_firmware/keyboards/crkbd/rev4_0/standard/keymaps/restricted
-3. Configuration
+```
+
+## Configuration
+
 This setup is optimized for security:
 
-rules.mk: Disables VIA, Vial, and Raw HID to prevent unauthorized memory access.
+- **rules.mk**: Disables VIA, Vial, and Raw HID to prevent unauthorized memory access.
+- **keymap.c**: The physical "source of truth" for your keys.
 
-keymap.c: The physical "source of truth" for your keys.
+> Note: Ensure you have the `QK_BOOT` key assigned to a layer to enter flash mode without opening the case.
 
-Note: Ensure you have the QK_BOOT key assigned to a layer to enter flash mode without opening the case.
+## Building and Flashing
 
-4. Building and Flashing
-We provide an automated script to handle the compilation and the flashing process.
-
-Set Permissions:
-Bash
+```bash
 chmod +x flash.sh
-Run the Flash Process:
-Bash
 ./flash.sh
-How to use the script:
-The script will first compile the code.
+```
 
-It will then wait for the keyboard to enter Bootloader Mode.
+The script will:
+1. Compile the firmware
+2. Wait for the keyboard to enter Bootloader Mode
+3. Flash the firmware automatically
 
-Action Required: Press the Reset Button on your Corne v4 twice quickly (or use your QK_BOOT key combination).
-
-The script will detect the drive and copy the firmware automatically.
+**Action Required**: Press the Reset button on your Corne v4 twice quickly (or use your `QK_BOOT` key combination).
 
 Repeat for the second half of the keyboard.
 
-5. Script Details (flash.sh)
-The flash.sh included in this repo is path-independent. It automatically finds your current directory and the QMK home directory to ensure a smooth build process regardless of where you cloned this project.
+### Script Details
 
-6. Security Audit
+The `flash.sh` script is path-independent and automatically locates your QMK home directory.
+
+## Security Audit
+
 To verify what is being installed on your hardware:
 
-Check rules.mk to ensure VIAL_ENABLE = no and VIA_ENABLE = no.
-
-Review keymap.c for any unexpected macros.
-
-Build the firmware and (optional) check the SHA256 hash of the resulting .uf2 file.
+1. Check `rules.mk` to ensure `VIAL_ENABLE = no` and `VIA_ENABLE = no`
+2. Review `keymap.c` for any unexpected macros
+3. Build the firmware and (optionally) check the SHA256 hash of the resulting `.uf2` file
