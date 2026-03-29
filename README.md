@@ -46,13 +46,7 @@ ln -s "$PWD" ~/qmk_firmware/keyboards/crkbd/rev4_1/standard/keymaps/restricted
 
 ## Configuration Details
 
-### 1. Stealth & Security (`config.h`)
-
-- **USB Spoofing**: Uses VendorID `0x04D9` (Holtek) and the product string "USB HID Keyboard".
-- **Polling Rate**: Capped at 125Hz (8ms) to mimic standard office peripherals.
-- **No Startup Check**: Disables USB startup checks for a faster, more "standard" boot behavior.
-
-### 2. Feature Lockdown (`rules.mk`)
+### Feature Lockdown (`rules.mk`)
 
 To minimize the attack surface and power consumption:
 
@@ -64,7 +58,7 @@ To minimize the attack surface and power consumption:
 ## Combo Reference
 
 | Keys (Layer 0) | Result  | Description       |
-| -------------- | ------- | ----------------- | ---- |
+| -------------- | ------- | ----------------- |
 | J + K          | `ESC`   | Escape            |
 | D + F          | `(`     | Left Parenthesis  |
 | H + J          | `)`     | Right Parenthesis |
@@ -73,9 +67,9 @@ To minimize the attack surface and power consumption:
 | V + B          | `{`     | Left Brace        |
 | N + M          | `}`     | Right Brace       |
 | . + /          | `\`     | Backslash         |
-| / + Shift      | ` | `                 | Pipe |
+| / + Shift      | `\|`    | Pipe              |
 | L + ;          | `~`     | Tilde             |
-| `;` + '        | `` ` `` | Backtick / Grave  |
+| ; + '          | `` ` `` | Backtick / Grave  |
 
 ## Building and Flashing
 
