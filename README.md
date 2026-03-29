@@ -12,6 +12,14 @@ Unlike standard firmwares, this setup is a **"Static Source of Truth"**:
 - **Shift-Backspace Morph**: Shift + Backspace automatically sends Delete.
 - **Mod-Tap Logic**: Tab acts as Control when held, and Tab when tapped.
 
+
+## Use Cases
+
+Corporate Compliance & Banking
+Digital Forensics / Incident Response (DFIR)
+Focus & Minimalist Workflow
+E-Sports / Competitive Play
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -92,7 +100,3 @@ To verify the firmware's integrity:
 1. **Source Check**: Review `rules.mk` to ensure `VIAL_ENABLE` and `VIA_ENABLE` are set to `no`.
 2. **Device Identity**: After flashing, the OS will list the device as a "Generic USB HID Keyboard".
 3. **Static Analysis**: All macros and combos are hardcoded in `keymap.c`, leaving no writeable user-space memory.
-
-## Final Implementation Tip
-
-Since you are using `L + ;` for Tilde and `; + '` for Grave, make sure your operating system's language matches your keymap expectations. If your PC is set to German (DE), you might need to adjust the specific keycodes (like `ALGR(KC_PLUS)` for Tilde) accordingly.

@@ -17,7 +17,6 @@ const uint16_t PROGMEM combo_rightBR[] = {KC_N, KC_M, COMBO_END};    // N + M = 
 const uint16_t PROGMEM combo_backslash[] = {KC_DOT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM combo_pipe[] = {KC_SLSH, KC_RSFT, COMBO_END};      // / + ShiftR = |
 
-
 const uint16_t PROGMEM combo_tilde[] = {KC_L, KC_SCLN, COMBO_END};    // L + ; = ~
 const uint16_t PROGMEM combo_Grave[] = {KC_SCLN, KC_QUOT, COMBO_END};    // ; + ' = ` 
 
