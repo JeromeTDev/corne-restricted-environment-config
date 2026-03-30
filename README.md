@@ -1,5 +1,7 @@
 # Corne Restricted Environment Config
 
+![Corne Keyboard](pictures/picture.jpg)
+
 Security-hardened QMK firmware for the Corne v4.1 (crkbd rev4_1 standard). This configuration is specifically designed for high-security environments where dynamic memory access (VIA/Vial) and "unidentified" USB devices are prohibited by IT security policies.
 
 ## Key Features (Hardcoded)
