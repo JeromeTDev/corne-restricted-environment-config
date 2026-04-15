@@ -3,6 +3,7 @@
 Security-hardened QMK firmware for the Corne v4.1 (crkbd rev4_1 standard). Designed for high-security environments where dynamic memory access (VIA/Vial) and unidentified USB devices are prohibited by IT security policies.
 
 ![Corne Keyboard](pictures/picture.jpg)
+![Layout](https://github.com/user-attachments/assets/1d529cf4-79d4-4b45-b792-bbfc71d07b64)
 
 ## Key Features
 
